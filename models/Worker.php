@@ -49,7 +49,7 @@ class Worker extends \yii\db\ActiveRecord
         return [
             [['fio', 'passport_data', 'inn', 'employment_history_id', 'cafedra_id', 'rank', 'pension_certificate_number', 'holiday_id', 'contract_id', 'start_working_date'], 'required'],
             [['inn', 'employment_history_id', 'cafedra_id', 'pension_certificate_number', 'holiday_id', 'contract_id', 'position_id'], 'integer'],
-            [['start_working_date'], 'safe'],
+            [['start_working_date'], 'date', 'format' => 'Y-m-d'],
             [['fio', 'passport_data', 'rank'], 'string', 'max' => 255],
             [['cafedra_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cafedra::className(), 'targetAttribute' => ['cafedra_id' => 'id']],
             [['contract_id'], 'exist', 'skipOnError' => true, 'targetClass' => Contract::className(), 'targetAttribute' => ['contract_id' => 'id']],
