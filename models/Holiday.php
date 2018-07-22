@@ -29,8 +29,8 @@ class Holiday extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['date_start', 'date_stop'], 'required'],
-            [['date_start', 'date_stop'], 'safe'],
+            [['date_start', 'date_stop', 'worker_id'], 'required'],
+            [['date_start', 'date_stop', 'worker_id'], 'safe'],
         ];
     }
 
@@ -41,6 +41,7 @@ class Holiday extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'worker_id' => 'Worker Id',
             'date_start' => 'Date Start',
             'date_stop' => 'Date Stop',
         ];

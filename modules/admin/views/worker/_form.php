@@ -32,10 +32,6 @@ use app\models\EmploymentHistory;
 
     <?= $form->field($model, 'pension_certificate_number')->textInput() ?>
 
-    <?= $form->field($model, 'holiday_id')->dropDownList(ArrayHelper::map(Holiday::find()->all(), 'id', 'date_start')) ?>
-
-    <?= $form->field($model, 'contract_id')->dropDownList(ArrayHelper::map(Contract::find()->all(), 'id', 'date_start')) ?>
-
     <?= $form->field($model, 'start_working_date')->textInput() ?>
 
     <?= $form->field($model, 'position_id')->dropDownList(ArrayHelper::map(Position::find()->all(), 'id', 'name')) ?>
