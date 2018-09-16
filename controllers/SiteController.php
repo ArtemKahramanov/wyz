@@ -7,7 +7,8 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\data\Pagination;
-use app\models\worker;
+use app\models\Worker;
+use app\models\Discipline;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
@@ -77,7 +78,7 @@ class SiteController extends Controller
          $query = Worker::find();
 
          $pagination = new Pagination([
-             'defaultPageSize' => 5,
+             'defaultPageSize' => $this->PageSize(),
              'totalCount' => $query->count(),
          ]);
 
@@ -90,6 +91,30 @@ class SiteController extends Controller
              'workers' => $workers,
              'pagination' => $pagination,
          ]);
+     }
+
+     public function actionDiscipline(){
+
+         $query = Discipline::find();
+
+         $pagination = new Pagination([
+             'defaultPageSize' => $this->PageSize(),
+             'totalCount' => $query->count(),
+         ]);
+
+         $disciplines = $query->orderBy('id')
+             ->offset($pagination->offset)
+             ->limit($pagination->limit)
+             ->all();
+
+         return $this->render('discipline', [
+             'disciplines' => $disciplines,
+             'pagination' => $pagination,
+         ]);
+     }
+
+     public function PageSize(){
+       return $defaultPageSize = 5;
      }
 
     public function actionLogin()

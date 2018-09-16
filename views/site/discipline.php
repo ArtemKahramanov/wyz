@@ -5,16 +5,16 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
-$this->title = 'Работники';
+$this->title = 'Дисциплины';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <ul>
-    <?php foreach ($workers as $worker): ?>
+    <?php foreach ($disciplines as $discipline): ?>
         <li>
-            <?= Html::encode("{$worker->id}: {$worker->fio}") ?>
+            <?= Html::encode("{$discipline->id}: {$discipline->name}, Количество часов:{$discipline->hours}") ?>
         </li>
     <?php endforeach; ?>
     </ul>
